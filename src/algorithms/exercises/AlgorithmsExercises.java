@@ -6,17 +6,21 @@
 
 package algorithms.exercises;
 
-/**
- *
- * @author anton
- */
-public class AlgorithmsExercises {
 
-    /**
-     * @param args the command line arguments
-     */
+public class AlgorithmsExercises {
+    
+    public static void print(int p){
+        System.out.println(p);
+    }
+    public static void print(String p){
+        System.out.println(p);
+    }
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        print(Bases.convertToBase("F10", 16));
+        print(4 | 2);
+        
     }
     
 }
