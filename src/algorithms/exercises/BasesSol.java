@@ -10,7 +10,7 @@ package algorithms.exercises;
  *
  * @author anton
  */
-public class Bases {
+public class BasesSol extends ABaseSolClass {
     
     
     public static int convertToBase(String number, int base){

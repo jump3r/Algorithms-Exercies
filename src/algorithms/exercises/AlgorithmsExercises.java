@@ -7,19 +7,26 @@
 package algorithms.exercises;
 
 
-public class AlgorithmsExercises {
-    
-    public static void print(int p){
-        System.out.println(p);
-    }
-    public static void print(String p){
-        System.out.println(p);
-    }
-    
+
+public class AlgorithmsExercises extends ABaseSolClass {
+        
     public static void main(String[] args) {
         
-        print(Bases.convertToBase("F10", 16));
-        print(4 | 2);
+        //print(BasesSol.convertToBase("F10", 16));
+        
+        //print(ArraysSol.replaceSpaces(new char[] {'a','b',' ','c',' ',' ',' '}, 4));
+        
+        //print(StringsSol.compressBad("aabccca"));
+        
+        int [][] matrix = new int[][]
+                        { 
+                        new int[] {1,2,3,4},
+                        new int[] {5,6,7,8},
+                        new int[] {9,10,11,12},
+                        new int[] {13,14,15,16}
+                        };        
+        
+        ArraysSol.turnMatrix(matrix);
         
     }
     
