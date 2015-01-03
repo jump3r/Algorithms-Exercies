@@ -29,14 +29,15 @@ public class AlgorithmsExercises extends ABaseSolClass {
         
         matrix[2][1] = 0;        
         //print(ArraysSol.setToZeros(matrix));
-        LinkedListSol head = new LinkedListSol(1, new LinkedListSol(2, new LinkedListSol(3)));
+        LinkedListSol head = new LinkedListSol(2, new LinkedListSol(2, new LinkedListSol(3)));
         //print(LinkedListSol.removeDups(head));
         //print(LinkedListSol.removeDupsNoBuf(head));
         //LinkedListSol.deleteCurrent(head); print(head);
-        //print(LinkedListSol.partitionAroundX2(head, 2));
-        LinkedListSol newHead = null;
-        LinkedListSol.reverseLinkedList(head);
-        print (head);
+        //print(LinkedListSol.partitionAroundX2(head, 2));        
+        //print(LinkedListSol.reverseLinkedList(head, null));
+        //LinkedListSol head1 = new LinkedListSol(2, new LinkedListSol(2, new LinkedListSol(3)));
+        //LinkedListSol head2 = new LinkedListSol(9, new LinkedListSol(9, new LinkedListSol(3)));
+        //print(LinkedListSol.addLinkedLists(head1, head2));
     }
     
 }

@@ -15,6 +15,7 @@ public class LinkedListSol {
     public LinkedListSol next;
     
     public LinkedListSol(int v){
+        this.next = null;
         this.v = v;
     }
     public LinkedListSol(int v, LinkedListSol next){
@@ -148,17 +149,110 @@ public class LinkedListSol {
         return before;
     }
     
-    public static LinkedListSol reverseLinkedList(LinkedListSol head){
-        
+    public static LinkedListSol reverseLinkedList(LinkedListSol head, LinkedListSol prev){
+        //Reverse linked list and return head
         if (head == null){
             return null;
-        } else if (head.next == null){            
+        } else if (head.next == null){ 
+            head.next = prev;
             return head;
         }
         
-        LinkedListSol parent = reverseLinkedList(head.next);
-        head.next = null;
-        parent.next = head;
-        return head;        
+        LinkedListSol newHead = reverseLinkedList(head.next, head);        
+        
+        head.next = prev;
+        
+        return newHead;
+    }
+    
+    public static LinkedListSol addLinkedLists(LinkedListSol list1, LinkedListSol list2){
+        //Arithmetically add values of two linked lists
+        //Can pad instead. Find length before iterating through lists
+        LinkedListSol sum = null;
+        list1 = reverseLinkedList(list1, null);
+        list2 = reverseLinkedList(list2, null);
+        
+        int carry = 0;
+        while (list2 != null || list1 != null){
+            int val1 = 0;
+            int val2 = 0;
+            
+            if(list1 != null) {
+                val1 = list1.v;
+                list1 = list1.next;
+            }
+            if(list2 != null) {
+                val2 = list2.v;
+                list2 = list2.next;
+            }
+                        
+            int newV = val1 + val2 + carry;
+            if (newV > 9){
+                newV = newV - 10;
+                carry = 1;
+            }else{
+                carry = 0;
+            }
+            
+            LinkedListSol node = new LinkedListSol(newV, sum);
+            sum = node;
+        }        
+        
+        if (carry > 0){
+            LinkedListSol node = new LinkedListSol(carry, sum);
+            sum = node;
+        }
+        return sum;
+    }
+    
+    public static int LinkedListLength(LinkedListSol ll){
+        if (ll == null) return 0;
+        if (ll.next == null) return 1;
+        return 1 + LinkedListLength(ll.next);
+    }
+    public static LinkedListSol padListBy(LinkedListSol listToPad, int padBy){
+        while(padBy != 0){
+            LinkedListSol zeroNode = new LinkedListSol(0, listToPad);
+            listToPad = zeroNode;
+        }
+        return listToPad;
+    }
+    public static LinkedListSol addEqualLengthLinkedListsRecursively(LinkedListSol list1, LinkedListSol list2, int carry){
+        
+        if (list1 == null && list2 == null && carry == 0 ){
+            return null;
+        }else if (list1 == null && list2 == null){
+            return new LinkedListSol(carry, null);
+        }
+        
+        int sum = list1.v + list2.v + carry;
+        int newV;
+        if(sum > 9){
+            carry = 1;
+            sum = sum - 10;
+        }
+        else{
+            carry = 0;
+        }
+        LinkedListSol nextNode = addEqualLengthLinkedListsRecursively(list1.next, list2.next, carry);
+        LinkedListSol currNode = new LinkedListSol(sum, nextNode);
+        
+        return currNode;
+    }
+    public static LinkedListSol addLinkedListsPadZeroes(LinkedListSol list1, LinkedListSol list2){
+        //Arithmetically add values of two linked lists
+        //Pad instead if different sizes
+        //Methods: LinkedListLength, padListBy, addEqualLengthLinkedListsRecursively, reverseLinkedList
+        int len1 = LinkedListLength(list1);
+        int len2 = LinkedListLength(list2);
+        
+        int padBy = 0;
+        if(len1 > len2){
+            list2 =  padListBy(list2, len1 - len2);
+        }else if(len2 > len1) {
+            list1 =  padListBy(list1, len1 - len2);
+        }        
+            
+        return addEqualLengthLinkedListsRecursively(reverseLinkedList(list1, null), reverseLinkedList(list2, null), 0);
     }
 }
