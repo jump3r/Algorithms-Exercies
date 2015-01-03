@@ -24,10 +24,19 @@ public class AlgorithmsExercises extends ABaseSolClass {
                         new int[] {5,6,7,8},
                         new int[] {9,10,11,12},
                         new int[] {13,14,15,16}
-                        };        
+                        };                
+        //ArraysSol.turnMatrix(matrix);
         
-        ArraysSol.turnMatrix(matrix);
-        
+        matrix[2][1] = 0;        
+        //print(ArraysSol.setToZeros(matrix));
+        LinkedListSol head = new LinkedListSol(1, new LinkedListSol(2, new LinkedListSol(3)));
+        //print(LinkedListSol.removeDups(head));
+        //print(LinkedListSol.removeDupsNoBuf(head));
+        //LinkedListSol.deleteCurrent(head); print(head);
+        //print(LinkedListSol.partitionAroundX2(head, 2));
+        LinkedListSol newHead = null;
+        LinkedListSol.reverseLinkedList(head);
+        print (head);
     }
     
 }

@@ -6,6 +6,9 @@
 
 package algorithms.exercises;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author anton
@@ -56,8 +59,30 @@ public class ArraysSol extends ABaseSolClass {
                 
                 //print(matrix);
             }            
-        }
+        }        
+        return matrix;
+    }
+    
+    public static int[][] setToZeros(int[][] matrix){
+        //Set to zeroes all intersecting rows and columns with zero at center 
+        boolean[] rows = new boolean[matrix.length];
+        boolean[] columns = new boolean[matrix[0].length];
         
+        for (int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[0].length; j++){
+                if (matrix[i][j] == 0){
+                    rows[i] = true;
+                    columns[j] = true;
+                }
+            }
+        }        
+        for (int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[0].length; j++){
+                if (rows[i] || columns[j]){
+                    matrix[i][j] = 0;
+                }
+            }
+        }        
         return matrix;
     }
 }

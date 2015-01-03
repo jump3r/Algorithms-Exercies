@@ -11,6 +11,9 @@ package algorithms.exercises;
  * @author anton
  */
 public class ABaseSolClass {
+    public static void println(){
+        System.out.println();
+    }
     
     public static void print(int p){
         System.out.println(p);
@@ -23,21 +26,28 @@ public class ABaseSolClass {
             System.out.print(cs[i]);
             System.out.print(',');
         }
-        System.out.println();
+        println();
     }
     public static void print(int[] ints){
         for (int i = 0; i < ints.length; i++){
             System.out.print(ints[i]);
             System.out.print(',');
         }   
-        System.out.println();
+        println();
     }
     public static void print(int[][] matrix){
-        for (int i = 0; i < matrix.length; i++){
+        for(int i = 0; i < matrix.length; i++){
             print(matrix[i]);
         }
-        System.out.println();
+        println();
     }
     
+    public static void print(LinkedListSol ll){
+        while (ll != null){
+            System.out.print(ll.v + ", ");
+            ll = ll.next;
+        }
+        println();
+    }
     
 }
