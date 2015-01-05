@@ -8,6 +8,7 @@ package algorithms.exercises;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class LinkedListSol {
     
@@ -254,5 +255,107 @@ public class LinkedListSol {
         }        
             
         return addEqualLengthLinkedListsRecursively(reverseLinkedList(list1, null), reverseLinkedList(list2, null), 0);
+    }
+    
+    public static LinkedListSol findBegOfLoopInLinkedList(LinkedListSol ll){
+        if (ll == null) return null;
+        
+        return advancePointers(ll, ll.next);
+    }
+    public static LinkedListSol advancePointers(LinkedListSol ll1, LinkedListSol ll2){
+        if (ll1 == null || ll2 == null) return null;
+        else if(ll1.next == null || ll2.next == null) return null;
+        
+        if (ll1 == ll2) {
+            ll1.next = null;
+            return ll1;
+        }
+        
+        return advancePointers(ll1.next, ll2.next.next);        
+    }
+    
+    public static boolean isPalyndromeByReversing(LinkedListSol ll){
+        
+        if (ll == null){
+            return false;
+        }
+        LinkedListSol revCopy = copyAndReverseLinkedList(ll, null);
+        
+        while (revCopy != null){
+            if (revCopy.v != ll.v){
+                return false;
+            }
+            revCopy = revCopy.next;
+            ll = ll.next;
+        }
+        
+        return true;
+    }
+    public static LinkedListSol copyAndReverseLinkedList(LinkedListSol ll, LinkedListSol copyPrev){
+        
+        if (ll == null) return null;
+        
+        LinkedListSol newNode = new LinkedListSol(ll.v, copyPrev);
+        
+        if (ll.next == null){
+            return newNode;
+        }
+        
+        return copyAndReverseLinkedList(ll.next, newNode);        
+    }
+    
+    public static boolean isPalyndromeUsingStack(LinkedListSol ll){
+        
+        LinkedListSol fast = ll;
+        LinkedListSol slow = ll;
+        Stack<Integer> stack = new Stack();
+        
+        while(fast != null && fast.next != null){
+            stack.push(slow.v);
+            slow = slow.next;
+            fast = fast.next.next;            
+        }
+        
+        if (fast == null){ // even
+            
+        }
+        else if(fast.next == null){        
+            slow = slow.next;                    
+        }
+        
+        while (!stack.isEmpty()){
+            if(slow.v != stack.pop()){
+                return false;
+            }
+            slow = slow.next;
+        }
+        return true;
+        //1>2>3>
+    }
+    
+    public static boolean isPalyndromeRecursively(LinkedListSol ll){
+        
+        if (ll != null){
+            if(isPalyndromeRecHelper(ll, ll) != null){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static LinkedListSol isPalyndromeRecHelper(LinkedListSol beg, LinkedListSol end){
+        
+        if (end == null){ //
+            return beg;
+        }
+        
+        LinkedListSol compareTo = isPalyndromeRecHelper(beg, end.next); //advance end pointer until base case
+        
+        if (compareTo == null || end.v != compareTo.v){ // 2nd base case
+            return null;
+        }
+        if (compareTo.next == null){ //head -> true
+            return compareTo;
+        }
+        return compareTo.next;
     }
 }

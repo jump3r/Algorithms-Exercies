@@ -6,6 +6,9 @@
 
 package algorithms.exercises;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 public class AlgorithmsExercises extends ABaseSolClass {
@@ -29,15 +32,25 @@ public class AlgorithmsExercises extends ABaseSolClass {
         
         matrix[2][1] = 0;        
         //print(ArraysSol.setToZeros(matrix));
-        LinkedListSol head = new LinkedListSol(2, new LinkedListSol(2, new LinkedListSol(3)));
+        LinkedListSol head = new LinkedListSol(1, new LinkedListSol(2, new LinkedListSol(3)));
         //print(LinkedListSol.removeDups(head));
         //print(LinkedListSol.removeDupsNoBuf(head));
-        //LinkedListSol.deleteCurrent(head); print(head);
-        //print(LinkedListSol.partitionAroundX2(head, 2));        
-        //print(LinkedListSol.reverseLinkedList(head, null));
+        //LinkedListSol.deleteCurrent(head); print(head);        
+        //print(LinkedListSol.partitionAroundX2(head, 2));                
+        //print(LinkedListSol.reverseLinkedList(head, null));        
         //LinkedListSol head1 = new LinkedListSol(2, new LinkedListSol(2, new LinkedListSol(3)));
         //LinkedListSol head2 = new LinkedListSol(9, new LinkedListSol(9, new LinkedListSol(3)));
         //print(LinkedListSol.addLinkedLists(head1, head2));
+        
+        //LinkedListSol cir = new LinkedListSol(4);
+        //LinkedListSol l1 = new LinkedListSol(1, new LinkedListSol(2, new LinkedListSol(3, cir)));
+        //cir.next = l1;
+        //print(LinkedListSol.findBegOfLoopInLinkedList(l1));
+        //print(LinkedListSol.isPalyndromeByReversing(head));
+        //print(LinkedListSol.isPalyndromeUsingStack(head)); 
+        //print(LinkedListSol.isPalyndromeRecursively(head)); 
+        print(ArraysSol.removeAndRolloverArrays(2, 0));
+        
     }
     
 }

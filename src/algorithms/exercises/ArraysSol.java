@@ -85,4 +85,45 @@ public class ArraysSol extends ABaseSolClass {
         }        
         return matrix;
     }
+    
+    public static List<List<Integer>> removeAndRolloverArrays(int elind, int arind){
+        List<Integer> ar1 = new ArrayList();
+        ar1.add(1);ar1.add(2);ar1.add(3);
+        List<Integer> ar2 = new ArrayList();
+        ar2.add(1);ar2.add(2);ar2.add(3);
+        List<Integer> ar3 = new ArrayList();
+        ar3.add(1);ar3.add(2);
+        List<List<Integer>> ars = new ArrayList();        
+        ars.add(ar1); ars.add(ar2); ars.add(ar3);
+        //[[1,2,3],[1,2,3],]
+        int maxSize = 3;
+        int arIndex = arind;
+        int elIndex = elind;
+        
+        while(true){
+        
+            if (elIndex + 1 == ars.get(arIndex).size() && 
+                    (ars.size() == arIndex + 1 || ars.get(arIndex+1).isEmpty() )){
+                ars.get(arIndex).remove(elIndex);
+                break;
+            }
+            
+            int elToMove = elIndex;
+            int arToMove = arIndex;
+            if(elIndex == maxSize - 1){
+                elToMove = 0;
+                arToMove++;
+            }else {
+                elToMove++;                
+            }
+            print(ars);
+            ars.get(arIndex).add(elIndex, ars.get(arToMove).get(elToMove));
+            ars.get(arIndex).remove(elIndex+1);
+            
+            arIndex = arToMove;
+            elIndex = elToMove;            
+        }
+        
+        return ars;
+    }
 }

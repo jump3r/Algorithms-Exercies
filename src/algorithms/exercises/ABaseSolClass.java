@@ -6,6 +6,8 @@
 
 package algorithms.exercises;
 
+import java.util.List;
+
 /**
  *
  * @author anton
@@ -43,11 +45,29 @@ public class ABaseSolClass {
     }
     
     public static void print(LinkedListSol ll){
+        if (ll == null) System.out.print("null");
         while (ll != null){
             System.out.print(ll.v + ", ");
             ll = ll.next;
         }
         println();
+    }  
+    public static void print(boolean b){
+        System.out.println(b);
+    }
+    /*
+    public static void print(List<Integer> ar){//Method resolution occurs at compile time and doesn't consider type parameters.
+        System.out.println(ar.toString());
+    }    
+    */
+    public static void printar(List<Integer> ar){
+        System.out.print(ar.toString());
+    }
+    public static void print(List<List<Integer>> ars){
+        for(List<Integer> ar : ars){
+            printar(ar);
+        }
+        System.out.println();
     }
     
 }
