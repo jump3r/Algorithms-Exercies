@@ -6,7 +6,20 @@
 
 package algorithms.exercises;
 
+import java.util.Stack;
 
-public class StacksSol {
-    
+public class StacksSol extends ABaseSolClass{
+    public static Stack<Integer> sortStackWithExtraStack(Stack<Integer> st){
+        
+        Stack<Integer> buf = new Stack();        
+        
+        while (!st.isEmpty()){
+            int tmp = st.pop();
+            while(!buf.isEmpty() && tmp < buf.peek()){
+                st.push(buf.pop());                
+            }
+            buf.push(tmp);
+        }    
+        return buf;
+    }
 }
